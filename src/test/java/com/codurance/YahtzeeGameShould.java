@@ -1,49 +1,32 @@
 package com.codurance;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class YahtzeeGameShould {
 
-    @Test
-    void chance_returns_sum_of_rolls() {
-        int[] rolls = {1,1,3,3,6};
+    @ParameterizedTest
+    @MethodSource("rollAndCategoryProvider")
+    public void scores_rolls(int[] rolls, String category, int expected) {
         YahtzeeGame game = new YahtzeeGame();
 
-        int actual = game.score(rolls, "chance");
-        int expected = 14;
+        int actual = game.score(rolls, category);
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test
-    void ones_returns_sum_of_all_ones() {
-        int[] rolls = {1,1,2,4,4};
-        YahtzeeGame game = new YahtzeeGame();
-
-        int expected = 2;
-        int actual = game.score(rolls, "ones");
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void ones_returns_zero_when_there_are_no_ones() {
-        int[] rolls = {6,2,2,4,4};
-        YahtzeeGame game = new YahtzeeGame();
-
-        int expected = 0;
-        int actual = game.score(rolls, "ones");
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void twos_returns_sum_of_twos() {
-        int[] rolls = {6,2,2,4,4};
-        YahtzeeGame game = new YahtzeeGame();
-
-        int expected = 4;
-        int actual = game.score(rolls, "twos");
-        assertThat(actual).isEqualTo(expected);
+    private static Stream<Arguments> rollAndCategoryProvider(){
+        return Stream.of(
+                Arguments.of(new int[]{1,1,3,3,6}, "chance", 14),
+                Arguments.of(new int[]{1,1,2,4,4}, "ones", 2),
+                Arguments.of(new int[]{6,2,2,4,4}, "ones", 0),
+                Arguments.of(new int[]{6,2,2,4,4}, "twos", 4)
+        );
     }
 
 }

@@ -14,13 +14,13 @@ public class YahtzeeGame {
         return chance(rolls);
     }
 
+    public int chance(int[] rolls) {
+        return Arrays.stream(rolls).reduce(0, (a, b) -> a + b);
+    }
+
     private int multiplesOfN(int[] rolls, int i) {
         return Arrays.stream(rolls).filter(roll -> roll == i)
                 .reduce(0, (a, b) -> a + b);
-    }
-
-    public int chance(int[] rolls) {
-        return Arrays.stream(rolls).reduce(0, (a, b) -> a + b);
     }
 
 }
