@@ -37,8 +37,9 @@ public class YahtzeeGameShould {
                 Arguments.of(new int[]{1, 1, 2, 3, 3}, "two pairs", 8),
                 Arguments.of(new int[]{1, 1, 2, 3, 4}, "two pairs", 0),
                 Arguments.of(new int[]{1, 1, 2, 2, 2}, "two pairs", 6),
-                Arguments.of(new int[]{3, 3, 3, 4, 5}, "three of a kind", 9)
-
+                Arguments.of(new int[]{3, 3, 3, 4, 5}, "three of a kind", 9),
+                Arguments.of(new int[]{3, 3, 4, 5, 6}, "three of a kind", 0),
+                Arguments.of(new int[]{3, 3, 3, 3, 1}, "three of a kind", 9)
         );
     }
 
