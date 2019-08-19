@@ -42,8 +42,10 @@ public class YahtzeeGame {
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
 
+        if(pairs.size() < 2){
+            return 0;
+        }
         return pairs.stream().reduce(0, (a, b) -> a + b * 2);
-
     }
 
     private int pairs(int[] rolls) {
