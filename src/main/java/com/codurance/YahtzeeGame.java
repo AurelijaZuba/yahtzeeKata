@@ -26,6 +26,8 @@ public class YahtzeeGame {
                 return new ThreeOfAKind().score(rolls);
             case "four of a kind":
                 return new FourOfAKind().score(rolls);
+            case "full house":
+                return new FullHouse().score(rolls);
             default:
                 return chance.score(rolls);
         }
