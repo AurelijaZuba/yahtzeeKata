@@ -8,6 +8,10 @@ public class YahtzeeGame {
         if(category.equals("ones")){
             return ones(rolls);
         }
+        if(category.equals("twos")){
+            return Arrays.stream(rolls).filter(roll -> roll == 2)
+                    .reduce(0, (a, b) -> a + b);
+        }
         return chance(rolls);
     }
 

@@ -42,7 +42,7 @@ public class YahtzeeGameShould {
         YahtzeeGame game = new YahtzeeGame();
 
         int expected = 4;
-        int actual = game.score(rolls, "two");
+        int actual = game.score(rolls, "twos");
         assertThat(actual).isEqualTo(expected);
     }
 
