@@ -17,7 +17,7 @@ public class FourOfAKind implements Rule{
     }
 
     boolean hasFour(Map.Entry<Integer, Integer> entry) {
-        return entry.getValue() == 4;
+        return entry.getValue() >= 4;
     }
 
     private Map<Integer, Integer> getRollCount(int[] rolls) {
