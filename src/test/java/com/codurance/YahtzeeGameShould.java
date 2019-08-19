@@ -25,4 +25,25 @@ public class YahtzeeGameShould {
         int actual = game.score(rolls, "ones");
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void ones_returns_zero_when_there_are_no_ones() {
+        int[] rolls = {6,2,2,4,4};
+        YahtzeeGame game = new YahtzeeGame();
+
+        int expected = 0;
+        int actual = game.score(rolls, "ones");
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void twos_returns_sum_of_twos() {
+        int[] rolls = {6,2,2,4,4};
+        YahtzeeGame game = new YahtzeeGame();
+
+        int expected = 4;
+        int actual = game.score(rolls, "two");
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
