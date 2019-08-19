@@ -35,6 +35,8 @@ public class YahtzeeGame {
                 return twoPairs.score(rolls);
             case "three of a kind":
                 return threeOfAKind.score(rolls);
+            case "four of a kind":
+                return new FourOfAKind().score(rolls);
             default:
                 return chance.score(rolls);
         }
