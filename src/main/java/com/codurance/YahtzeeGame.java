@@ -21,9 +21,29 @@ public class YahtzeeGame {
                 return multiplesOfN(rolls, 6);
             case "pairs":
                 return pairs(rolls);
+            case "two pairs":
+                return twoPairs(rolls);
             default:
                 return chance(rolls);
         }
+    }
+
+    private int twoPairs(int[] rolls) {
+        Map<Integer, Integer> rollCount = new HashMap<>();
+        for (int roll : rolls) {
+            if (rollCount.containsKey(roll))
+                rollCount.replace(roll, rollCount.get(roll) + 1);
+            else
+                rollCount.put(roll, 1);
+        }
+
+        List<Integer> pairs = rollCount.entrySet().stream()
+                .filter(entry -> entry.getValue() == 2)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
+
+        return pairs.stream().reduce(0, (a, b) -> a + b * 2);
+
     }
 
     private int pairs(int[] rolls) {
