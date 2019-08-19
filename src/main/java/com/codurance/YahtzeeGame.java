@@ -14,6 +14,15 @@ public class YahtzeeGame {
         if(category.equals("threes")){
             return multiplesOfN(rolls, 3);
         }
+        if(category.equals("fours")){
+            return multiplesOfN(rolls, 4);
+        }
+        if(category.equals("fives")){
+            return multiplesOfN(rolls, 5);
+        }
+        if(category.equals("sixes")){
+            return multiplesOfN(rolls, 6);
+        }
         return chance(rolls);
     }
 

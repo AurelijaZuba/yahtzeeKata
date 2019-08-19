@@ -27,7 +27,11 @@ public class YahtzeeGameShould {
                 Arguments.of(new int[]{6,2,2,4,4}, "ones", 0),
                 Arguments.of(new int[]{6,2,2,4,4}, "twos", 4),
                 Arguments.of(new int[]{6,3,3,4,4}, "twos", 0),
-                Arguments.of(new int[]{6,3,3,4,4}, "threes", 6)
+                Arguments.of(new int[]{6,3,3,4,4}, "threes", 6),
+                Arguments.of(new int[]{6,3,3,4,4}, "fours", 8),
+                Arguments.of(new int[]{6,3,3,5,5}, "fives", 10),
+                Arguments.of(new int[]{6,3,3,5,5}, "sixes", 6)
+
         );
     }
 
