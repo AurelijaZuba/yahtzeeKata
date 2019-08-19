@@ -23,6 +23,14 @@ public class ThreeOfAKind implements Rule{
 
     @Override
     public int score(int[] rolls) {
+        Map<Integer, Integer> rollCount = getRollCount(rolls);
+
+        List<Integer> pairs = selectThrees(rollCount);
+
+        return pairs.stream().reduce(0, (a, b) -> a + b * 3);
+    }
+
+    private Map<Integer, Integer> getRollCount(int[] rolls) {
         Map<Integer, Integer> rollCount1 = new HashMap<Integer, Integer>();
         for (int roll : rolls) {
             if (rollCount1.containsKey(roll))
@@ -30,10 +38,6 @@ public class ThreeOfAKind implements Rule{
             else
                 rollCount1.put(roll, 1);
         }
-        Map<Integer, Integer> rollCount = rollCount1;
-
-        List<Integer> pairs = selectThrees(rollCount);
-
-        return pairs.stream().reduce(0, (a, b) -> a + b * 3);
+        return rollCount1;
     }
 }

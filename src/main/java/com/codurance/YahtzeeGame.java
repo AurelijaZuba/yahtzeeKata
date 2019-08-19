@@ -7,17 +7,17 @@ public class YahtzeeGame {
     public int score(int[] rolls, String category) {
         switch (category) {
             case "ones":
-                return new MultiplesOfOne().score(rolls);
+                return new SumOfOnes().score(rolls);
             case "twos":
-                return new MultiplesOfTwo().score(rolls);
+                return new SumOfTwos().score(rolls);
             case "threes":
-                return new MultipleOfThrees().score(rolls);
+                return new SumOfThrees().score(rolls);
             case "fours":
-                return new MultipleOfFours().score(rolls);
+                return new SumOfFours().score(rolls);
             case "fives":
-                return new MultipleOfFives().score(rolls);
+                return new SumOfFives().score(rolls);
             case "sixes":
-                return new MultipleOfSixes().score(rolls);
+                return new SumOfSixes().score(rolls);
             case "pairs":
                 return new Pairs().score(rolls);
             case "two pairs":

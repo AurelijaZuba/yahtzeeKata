@@ -2,13 +2,13 @@ package com.codurance;
 
 import java.util.Arrays;
 
-public class MultipleOfSixes implements Rule{
-    public MultipleOfSixes() {
+public class SumOfTwos implements Rule{
+    public SumOfTwos() {
     }
 
     @Override
     public int score(int[] rolls) {
-        return Arrays.stream(rolls).filter(roll -> roll == 6)
+        return Arrays.stream(rolls).filter(roll -> roll == 2)
                 .reduce(0, (a, b) -> a + b);
     }
 }
