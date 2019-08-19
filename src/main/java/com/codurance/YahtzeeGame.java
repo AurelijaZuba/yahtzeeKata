@@ -31,33 +31,17 @@ public class YahtzeeGame {
     }
 
     private int threeOfAKind(int[] rolls) {
-        Map<Integer, Integer> rollCount = new HashMap<>();
-        for (int roll : rolls) {
-            if (rollCount.containsKey(roll))
-                rollCount.replace(roll, rollCount.get(roll) + 1);
-            else
-                rollCount.put(roll, 1);
-        }
+        Map<Integer, Integer> rollCount = getRollCount(rolls);
 
-        return rollCount.entrySet().stream()
-                .filter(entry -> entry.getValue() == 3)
-                .map(entry -> entry.getValue())
-                .reduce(0, (a, b) -> a + b * 3);
+        List<Integer> pairs = selectThrees(rollCount);
+
+        return pairs.stream().reduce(0, (a, b) -> a + b * 3);
     }
 
     private int twoPairs(int[] rolls) {
-        Map<Integer, Integer> rollCount = new HashMap<>();
-        for (int roll : rolls) {
-            if (rollCount.containsKey(roll))
-                rollCount.replace(roll, rollCount.get(roll) + 1);
-            else
-                rollCount.put(roll, 1);
-        }
+        Map<Integer, Integer> rollCount = getRollCount(rolls);
 
-        List<Integer> pairs = rollCount.entrySet().stream()
-                .filter(entry -> entry.getValue() >= 2)
-                .map(entry -> entry.getKey())
-                .collect(Collectors.toList());
+        final List<Integer> pairs = selectPairs(rollCount);
 
         if(pairs.size() < 2){
             return 0;
@@ -66,18 +50,9 @@ public class YahtzeeGame {
     }
 
     private int pairs(int[] rolls) {
-        Map<Integer, Integer> rollCount = new HashMap<>();
-        for (int roll : rolls) {
-            if (rollCount.containsKey(roll))
-                rollCount.replace(roll, rollCount.get(roll) + 1);
-            else
-                rollCount.put(roll, 1);
-        }
+        Map<Integer, Integer> rollCount = getRollCount(rolls);
 
-        List<Integer> pairs = rollCount.entrySet().stream()
-                .filter(entry -> entry.getValue() == 2)
-                .map(entry -> entry.getKey())
-                .collect(Collectors.toList());
+        List<Integer> pairs = selectPairs(rollCount);
 
         Optional<Integer> largest = pairs.stream().max(Integer::compareTo);
         if (largest.isPresent())
@@ -87,6 +62,39 @@ public class YahtzeeGame {
 
     public int chance(int[] rolls) {
         return Arrays.stream(rolls).reduce(0, (a, b) -> a + b);
+    }
+
+    private List<Integer> selectThrees(Map<Integer, Integer> rollCount) {
+        return rollCount.entrySet().stream()
+                .filter(entry -> hasThree(entry))
+                .map(entry -> entry.getValue())
+                .collect(Collectors.toList());
+    }
+
+    private boolean hasThree(Map.Entry<Integer, Integer> entry) {
+        return entry.getValue() == 3;
+    }
+
+    private List<Integer> selectPairs(Map<Integer, Integer> rollCount) {
+        return rollCount.entrySet().stream()
+                    .filter(entry -> hasAtLeast2(entry))
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList());
+    }
+
+    private boolean hasAtLeast2(Map.Entry<Integer, Integer> entry) {
+        return entry.getValue() >= 2;
+    }
+
+    private Map<Integer, Integer> getRollCount(int[] rolls) {
+        Map<Integer, Integer> rollCount = new HashMap<>();
+        for (int roll : rolls) {
+            if (rollCount.containsKey(roll))
+                rollCount.replace(roll, rollCount.get(roll) + 1);
+            else
+                rollCount.put(roll, 1);
+        }
+        return rollCount;
     }
 
     private int multiplesOfN(int[] rolls, int i) {
