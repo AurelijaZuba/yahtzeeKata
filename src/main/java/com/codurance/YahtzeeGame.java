@@ -11,6 +11,9 @@ public class YahtzeeGame {
         if(category.equals("twos")){
             return multiplesOfN(rolls, 2);
         }
+        if(category.equals("threes")){
+            return multiplesOfN(rolls, 3);
+        }
         return chance(rolls);
     }
 
