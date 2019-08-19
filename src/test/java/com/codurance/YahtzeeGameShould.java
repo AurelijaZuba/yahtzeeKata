@@ -15,4 +15,14 @@ public class YahtzeeGameShould {
         int expected = 14;
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void ones_returns_sum_of_all_ones() {
+        int[] rolls = {1,1,2,4,4};
+        YahtzeeGame game = new YahtzeeGame();
+
+        int expected = 2;
+        int actual = game.score(rolls, "ones");
+        assertThat(actual).isEqualTo(expected);
+    }
 }
