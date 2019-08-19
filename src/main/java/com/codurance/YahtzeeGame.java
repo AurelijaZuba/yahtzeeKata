@@ -27,9 +27,9 @@ public class YahtzeeGame {
     }
 
     private int pairs(int[] rolls) {
-        Map<Integer, Integer> rollCount = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> rollCount = new HashMap<>();
         for (int roll : rolls) {
-            if(rollCount.containsKey(roll))
+            if (rollCount.containsKey(roll))
                 rollCount.replace(roll, rollCount.get(roll) + 1);
             else
                 rollCount.put(roll, 1);
@@ -40,10 +40,10 @@ public class YahtzeeGame {
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
 
-
         Optional<Integer> largest = pairs.stream().max(Integer::compareTo);
-
-        return largest.get() * 2;
+        if (largest.isPresent())
+            return largest.get() * 2;
+        return 0;
     }
 
     public int chance(int[] rolls) {

@@ -20,21 +20,21 @@ public class YahtzeeGameShould {
         assertThat(actual).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> rollAndCategoryProvider(){
+    private static Stream<Arguments> rollAndCategoryProvider() {
         return Stream.of(
-                Arguments.of(new int[]{1,1,3,3,6}, "chance", 14),
-                Arguments.of(new int[]{1,1,2,4,4}, "ones", 2),
-                Arguments.of(new int[]{6,2,2,4,4}, "ones", 0),
-                Arguments.of(new int[]{6,2,2,4,4}, "twos", 4),
-                Arguments.of(new int[]{6,3,3,4,4}, "twos", 0),
-                Arguments.of(new int[]{6,3,3,4,4}, "threes", 6),
-                Arguments.of(new int[]{6,3,3,4,4}, "fours", 8),
-                Arguments.of(new int[]{6,3,3,5,5}, "fives", 10),
-                Arguments.of(new int[]{6,3,3,5,5}, "sixes", 6),
-                Arguments.of(new int[]{3,3,3,4,4}, "pairs", 8),
-                Arguments.of(new int[]{1,1,6,2,6}, "pairs", 12),
-                Arguments.of(new int[]{1,2,3,4,5}, "pairs", 8)
-
+                Arguments.of(new int[]{1, 1, 3, 3, 6}, "chance", 14),
+                Arguments.of(new int[]{1, 1, 2, 4, 4}, "ones", 2),
+                Arguments.of(new int[]{6, 2, 2, 4, 4}, "ones", 0),
+                Arguments.of(new int[]{6, 2, 2, 4, 4}, "twos", 4),
+                Arguments.of(new int[]{6, 3, 3, 4, 4}, "twos", 0),
+                Arguments.of(new int[]{6, 3, 3, 4, 4}, "threes", 6),
+                Arguments.of(new int[]{6, 3, 3, 4, 4}, "fours", 8),
+                Arguments.of(new int[]{6, 3, 3, 5, 5}, "fives", 10),
+                Arguments.of(new int[]{6, 3, 3, 5, 5}, "sixes", 6),
+                Arguments.of(new int[]{3, 3, 3, 4, 4}, "pairs", 8),
+                Arguments.of(new int[]{1, 1, 6, 2, 6}, "pairs", 12),
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, "pairs", 0), Arguments.of(new int[]{1, 2, 3, 4, 5}, "pairs", 0),
+                Arguments.of(new int[]{1, 1, 2, 3, 3}, "two pairs", 8)
         );
     }
 
