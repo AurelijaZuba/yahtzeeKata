@@ -2,10 +2,17 @@ package com.codurance;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class YahtzeeGameShould {
 
     @Test
-    void name() {
+    void chance_returns_sum_of_rolls() {
+        int[] rolls = {1,1,3,3,6};
+        YahtzeeGame game = new YahtzeeGame();
 
+        int actual = game.chance(rolls);
+        int expected = 14;
+        assertThat(actual).isEqualTo(expected);
     }
 }
