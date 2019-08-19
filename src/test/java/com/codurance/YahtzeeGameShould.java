@@ -42,7 +42,13 @@ public class YahtzeeGameShould {
                 Arguments.of(new int[]{3, 3, 3, 3, 1}, "three of a kind", 9),
                 Arguments.of(new int[]{2, 2, 2, 2, 5}, "four of a kind", 8),
                 Arguments.of(new int[]{2, 2, 2, 5, 5}, "four of a kind", 0),
-                Arguments.of(new int[]{2, 2, 2, 2, 2}, "four of a kind", 8)
+                Arguments.of(new int[]{2, 2, 2, 2, 2}, "four of a kind", 8),
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, "small straight", 15),
+                Arguments.of(new int[]{2, 3, 4, 5, 6}, "large straight", 20),
+                Arguments.of(new int[]{1, 1, 2, 2, 2}, "full house", 8),
+                Arguments.of(new int[]{2, 2, 3, 3, 4}, "full house", 0)
+
+
         );
     }
 

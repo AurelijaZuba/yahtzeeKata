@@ -11,12 +11,12 @@ public class FourOfAKind implements Rule{
 
     List<Integer> selectFours(Map<Integer, Integer> rollCount) {
         return rollCount.entrySet().stream()
-                .filter(entry -> hasFour(entry))
+                .filter(entry -> hasAtLeastFour(entry))
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
     }
 
-    boolean hasFour(Map.Entry<Integer, Integer> entry) {
+    boolean hasAtLeastFour(Map.Entry<Integer, Integer> entry) {
         return entry.getValue() >= 4;
     }
 
