@@ -67,12 +67,12 @@ public class YahtzeeGame {
     private List<Integer> selectThrees(Map<Integer, Integer> rollCount) {
         return rollCount.entrySet().stream()
                 .filter(entry -> hasThree(entry))
-                .map(entry -> entry.getValue())
+                .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
     }
 
     private boolean hasThree(Map.Entry<Integer, Integer> entry) {
-        return entry.getValue() == 3;
+        return entry.getValue() >= 3;
     }
 
     private List<Integer> selectPairs(Map<Integer, Integer> rollCount) {
