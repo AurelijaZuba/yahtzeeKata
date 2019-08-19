@@ -5,25 +5,22 @@ import java.util.Arrays;
 public class YahtzeeGame {
 
     public int score(int[] rolls, String category) {
-        if(category.equals("ones")){
-            return multiplesOfN(rolls, 1);
+        switch (category) {
+            case "ones":
+                return multiplesOfN(rolls, 1);
+            case "twos":
+                return multiplesOfN(rolls, 2);
+            case "threes":
+                return multiplesOfN(rolls, 3);
+            case "fours":
+                return multiplesOfN(rolls, 4);
+            case "fives":
+                return multiplesOfN(rolls, 5);
+            case "sixes":
+                return multiplesOfN(rolls, 6);
+            default:
+                return chance(rolls);
         }
-        if(category.equals("twos")){
-            return multiplesOfN(rolls, 2);
-        }
-        if(category.equals("threes")){
-            return multiplesOfN(rolls, 3);
-        }
-        if(category.equals("fours")){
-            return multiplesOfN(rolls, 4);
-        }
-        if(category.equals("fives")){
-            return multiplesOfN(rolls, 5);
-        }
-        if(category.equals("sixes")){
-            return multiplesOfN(rolls, 6);
-        }
-        return chance(rolls);
     }
 
     public int chance(int[] rolls) {
