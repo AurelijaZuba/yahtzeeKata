@@ -23,9 +23,26 @@ public class YahtzeeGame {
                 return pairs(rolls);
             case "two pairs":
                 return twoPairs(rolls);
+            case "three of a kind":
+                return threeOfAKind(rolls);
             default:
                 return chance(rolls);
         }
+    }
+
+    private int threeOfAKind(int[] rolls) {
+        Map<Integer, Integer> rollCount = new HashMap<>();
+        for (int roll : rolls) {
+            if (rollCount.containsKey(roll))
+                rollCount.replace(roll, rollCount.get(roll) + 1);
+            else
+                rollCount.put(roll, 1);
+        }
+
+        return rollCount.entrySet().stream()
+                .filter(entry -> entry.getValue() == 3)
+                .map(entry -> entry.getValue())
+                .reduce(0, (a, b) -> a + b * 3);
     }
 
     private int twoPairs(int[] rolls) {
