@@ -8,6 +8,10 @@ public class YahtzeeGame {
     }
 
     public int score(int[] rolls, String category) {
+        if(category.equals("ones")){
+           return Arrays.stream(rolls).filter(roll -> roll == 1)
+                   .reduce(0, (a,b) -> a + b);
+        }
         return chance(rolls);
     }
 }
