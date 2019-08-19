@@ -31,24 +31,19 @@ public class YahtzeeGame {
         for (int roll : rolls) {
             if(rollCount.containsKey(roll))
                 rollCount.replace(roll, rollCount.get(roll) + 1);
-            rollCount.put(roll, 1);
+            else
+                rollCount.put(roll, 1);
         }
 
-        List<Integer> pairs = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> roll : rollCount.entrySet()) {
-            if(roll.getValue() == 1)
-                pairs.add(roll.getKey());
-        }
+        List<Integer> pairs = rollCount.entrySet().stream()
+                .filter(entry -> entry.getValue() == 2)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
 
 
-        Integer largest = pairs.get(0);
-        for (Integer roll :
-                pairs) {
-            if(roll > largest)
-                largest = roll;
-        }
+        Optional<Integer> largest = pairs.stream().max(Integer::compareTo);
 
-        return largest * 2;
+        return largest.get() * 2;
     }
 
     public int chance(int[] rolls) {
