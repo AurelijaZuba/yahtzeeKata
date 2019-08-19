@@ -38,7 +38,7 @@ public class YahtzeeGame {
         }
 
         List<Integer> pairs = rollCount.entrySet().stream()
-                .filter(entry -> entry.getValue() == 2)
+                .filter(entry -> entry.getValue() >= 2)
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
 
