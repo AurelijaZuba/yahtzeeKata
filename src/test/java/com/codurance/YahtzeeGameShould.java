@@ -11,7 +11,7 @@ public class YahtzeeGameShould {
         int[] rolls = {1,1,3,3,6};
         YahtzeeGame game = new YahtzeeGame();
 
-        int actual = game.chance(rolls);
+        int actual = game.score(rolls, "chance");
         int expected = 14;
         assertThat(actual).isEqualTo(expected);
     }
