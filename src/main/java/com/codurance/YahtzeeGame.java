@@ -6,21 +6,21 @@ public class YahtzeeGame {
 
     public int score(int[] rolls, String category) {
         if(category.equals("ones")){
-            return ones(rolls);
+            return multiplesOfN(rolls, 1);
         }
         if(category.equals("twos")){
-            return Arrays.stream(rolls).filter(roll -> roll == 2)
-                    .reduce(0, (a, b) -> a + b);
+            return multiplesOfN(rolls, 2);
         }
         return chance(rolls);
+    }
+
+    private int multiplesOfN(int[] rolls, int i) {
+        return Arrays.stream(rolls).filter(roll -> roll == i)
+                .reduce(0, (a, b) -> a + b);
     }
 
     public int chance(int[] rolls) {
         return Arrays.stream(rolls).reduce(0, (a, b) -> a + b);
     }
 
-    private int ones(int[] rolls) {
-        return Arrays.stream(rolls).filter(roll -> roll == 1)
-                .reduce(0, (a,b) -> a + b);
-    }
 }
